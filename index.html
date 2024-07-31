@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" style="width: 100%; padding: 0; margin: 0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, orientation=landscape">
+
+    <title class="Geosensitive" id="Geosensitive"></title>
+     
+    
+   
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.86/Build/Cesium/Cesium.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link id="x-icon" rel="icon" href="/assets/SpatialCraft-Color-Logomark-Ddx-CUnZ.png" type="image/x-icon" />
+    <script>
+    
+      //defining the dynamic variables
+      const projectname="Quelossim"
+      const imglocation=""
+      const companylogo="/SpatialCraft-Color-Logomark.png"
+      const centerpoint="8232572.3,1732972.7"
+      const youtubelink=""
+      const threesixtylink=""
+
+      // setting the variables tot he markup
+      $(document).ready(function() {
+            $("#Geosensitive").text(projectname);
+            $("#Title").text(projectname);
+            $("#Title_mob").text(projectname);
+            $("#x-icon").attr("href", imglocation);
+            $(".svg").attr("src", imglocation);
+      
+            $("#youtube_vid").attr("src", youtubelink);
+            $("#threesixty_image").attr("src", threesixtylink);
+
+        });
+    
+// Define the toggleSidebar function
+function toggleSidebar() {
+    var sidebar = document.getElementById("mySidebar");
+    var map = document.getElementById("map");
+    var openBtn = document.getElementById("openSidebarBtn");
+    const title = $('#Title').html();
+    const sidebarTitle = $('#sidebar-Title');
+    const poweredBy = $('#poweredBy');
+    const poweredBymob = $('#poweredBymob');
+
+    if ($('body').width() <= 600)  {
+        // Mobile view
+        if (sidebar.style.width === "75%") {
+            sidebar.style.width = "0";
+            map.style.marginLeft = "0";
+            openBtn.style.display = "block";
+            poweredBy.css('display', 'block');
+            poweredBymob.css('display', 'none');
+        } else {
+            sidebar.style.width = "75%";
+            map.style.marginLeft = "75%";
+            openBtn.style.display = "none";
+            sidebarTitle.html(title).css('font-size', '25px');
+            poweredBy.css('display', 'none');
+            poweredBymob.css('display', 'block');
+        }
+    } else {
+        // Desktop view
+        if (sidebar.style.width === "30%") {
+            sidebar.style.width = "0";
+            map.style.marginLeft = "0";
+            openBtn.style.display = "block";
+        } else {
+            sidebar.style.width = "30%";
+            map.style.marginLeft = "30%";
+            openBtn.style.display = "none";
+            sidebarTitle.html(title).css('font-size', '35px');
+        }
+    }
+}
+
+// Add event listener for the button
+document.getElementById("toggleSidebarBtn").addEventListener("click", toggleSidebar);
+
+      
+
+
+
+
+    </script>
+    <script type="module" crossorigin src="/assets/index-CdE7Dc28.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D-DKmLI_.css">
+  </head>
+
+  <body
+    style="width: 100%; padding: 0; margin: 0; background-color: rgb(2, 24, 2)"
+  >
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="navbar_l">
+        <!--<img class="svg" id="svg" src="" alt="" />-->
+
+        <a href="#">
+          <div class="Title" id="Title"></div>
+        </a>
+      </div>
+      <!--<form name="plot-number-search srch_box" id="plot-number-search">
+        <input
+          type="search"
+          id="plot-input"
+          name="plotNumber"
+          placeholder="Plot Number(1-26)"
+          autocomplete="..."
+          class="search_bx"
+        />
+        <button class="button-6" id="search" name="search" type="submit">Submit</button>
+      </form>
+
+      <form id="global-number-search srch_box">
+        <input
+          type="search"
+          id="global-input"
+          name="globalSearch"
+          placeholder="Find Location"
+          autocomplete="..."
+          class="search_bx"
+        />
+        <button class="button-6" id="search-global" type="submit">Submit</button>
+      </form>-->
+
+      <div class="navbar_r">
+        <!--<a href="#">
+          <div class="Geosensitive" id="Geosensitive_link">GeoSensitive</div>
+        </a>-->
+        <img id="logo_geo" class="LogoGeo31" src="data:image/png;base64,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" />
+      </div>
+    </div>
+
+    <!--Mobile navbar -->
+    
+    <div class="navbar_m">
+        <div class="navbar_l">
+          <!--<img class="svg" id="svg" src="" alt="" />-->
+  
+          <a href="#">
+            <div class="Title" id="Title_mob"></div>
+          </a>
+         
+          <!--<a href="#"> <div class="Geosensitive" id="Geosensitive_link_mob">GeoSensitive</div>  </a>-->
+        
+          <img id="logo_geo_mob" class="LogoGeo31" src="data:image/png;base64,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" />
+        </div>
+
+        
+  
+        <div class="navbar_r">
+
+           <!-- <form name="plot-number-search srch_box " class="form_space" id="plot-number-search">
+                <input
+                  type="search"
+                  id="plot-input_mob"
+                  name="plotNumber"
+                  placeholder="Plot Number(1-26)"
+                  autocomplete="..."
+                  class="form_input"
+                  class="search_bx"
+                />
+                <button class="button-6" id="search_mob" name="search" type="submit">Search</button>
+              </form>
+        
+              <form id="global-number-search srch_box " class="form_space">
+                <input
+                  type="search"
+                  id="global-input_mob"
+                  name="globalSearch"
+                  placeholder="Search"
+                  autocomplete="..."
+                  class="form_input"
+                  class="search_bx"
+                />
+                <button class="button-6" id="search-global_mob" type="submit">Search</button>
+              </form>-->
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- North arrow 
+    <img
+      id="north-arrow"
+      src="/images/northarrow-removebg-preview.png"
+      alt="North Arrow"
+    />-->
+    
+    <!-- Map -->
+    <div id="map">
+      <!--Powered by Geosensitive-->
+      <div id="poweredBy">Powered by <a href="https://spatialcraft.in/geosensitive/" target="_blank">GeoSensitive</a></div>
+    </div>
+       
+       <!-- Login button container 
+       <div class="login-container ">-->
+        <!-- Use an image for the login button 
+        <img id="admin_img" src="./images/admin icon.png" alt="Login" onclick="showLogin()">
+      </div>-->
+
+    <!-- Sidebar -->
+    <div id="mySidebar" class="sidebar">
+   
+      <div class="Sidebar-content">
+        <button
+        class="ol-popup-closer"
+        id="sidebar-closer"
+        onclick="toggleSidebar()"
+      ></button><br>
+        <div id="sidebar-Title"></div>
+       <p id="sidebar-info">
+         <!--
+        <br>
+          <span style="font-size: large;"><br>
+            Key Highlights:
+            </span>
+            <table id="highlights-table" style="color: white;">
+              <tr>
+                <th>Landmark</th>
+                <th>Distance</th>
+              </tr>
+              <tr>
+                <td>Mopa Airport</td>
+                <td>17 km</td>
+              </tr>
+              <tr>
+                <td>Banda</td>
+                <td>20 km</td>
+              </tr>
+              <tr>
+                <td>Tillari Damn</td>
+                <td>77 km</td>
+              </tr>
+              <tr>
+                <td>Ugade Industrial Estate</td>
+                <td>11 km</td>
+              </tr>
+              <tr>
+                <td>Morjim</td>
+                <td>45 km</td>
+              </tr>
+            </table>
+         
+        </p>
+        
+          <img class="sidebar_photo"  src="./images/1.jpg" alt=""><br>
+          <img  class="sidebar_photo"  src="./images/2.jpg" alt=""><br>
+          <img  class="sidebar_photo"  src="./images/3.jpg" alt=""><br>
+-->
+
+        
+
+        
+
+        <!-- Landmarks 
+
+        <div id="draggable2">
+          <div id="draggable-header2">
+            <div id="draggable-title2">Landmarks</div>
+          </div>
+          <div id="draggable-content2"></div>
+        </div>-->
+        <div style="display: none;color: green;font-size: 10px;" id="poweredBymob">Powered by <a href="https://spatialcraft.in/geosensitive/" target="_blank">GeoSensitive</a></div>
+      </div>
+    </div>
+
+    <!-- Open Sidebar Button -->
+
+    <div id="openSidebarBtn" class="openbtn" onclick="toggleSidebar()">
+      &#8594;
+    </div>
+    
+    <!--Layer list-->
+    <div id="draggable">
+      <div id="draggable-header">
+        <div id="draggable-title">Layers</div>
+        <a href="#" id="draggable-closer" class="ol-popup-closer2"></a>
+      </div>
+      <div id="draggable-content"></div>
+    </div>
+
+    <!-- Landmarks Trigger 
+    <div class="Rectangle2">
+        <a href="#" class="rect_">
+            <div class="layerclick">
+                <p class="layers" id="layers">Landmarks</p>
+                <img src="/images/arrow_down.png" class="video_icon" alt="" id="layers_starter">
+            </div>
+        </a>
+    </div>-->
+
+    <!-- Video 
+    <div class="Rectangle3">
+        <a href="#" class="rect_" id="">
+            <div class="vid">
+                <p class="video" id="video">Play Video</p>
+                <img src="/images/arrow-right.png" class="video_icon" alt="" id="video_starter" >
+            </div>
+        </a>
+    </div>-->
+    <div id="hiddenDiv">
+      <img id="hiddiv" src="downlaod.png" alt="">
+    </div>
+
+    <!-- Video Player -->
+    <div id="centeredContainer">
+      <div id="youtubevideodiv">
+        <iframe
+          id="youtube_vid"
+          src=""
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; 
+             gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <div class="ol-popup-closer" style="color: orange" id="closerBtn"></div>
+      </div>
+    </div>
+
+    
+    
+    <div id="centeredContainer2">
+      <div id="threesixty_div">
+        <iframe  id="threesixty_image" src="" width="600" height="450" style="border:0;" allowfullscreen="" 
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="ol-popup-closer" id="closerBtn2"></div>
+      </div>
+    </div>
+
+    <!--<div id="centeredContainer_adminform">
+      <div id="adminform">
+          <h2>Admin Login</h2>
+          <form id="adminLoginForm" action="admin_login.php" method="post">
+              <label for="adminUsername">Username:</label>
+              <input type="text" id="adminUsername" name="adminUsername" required>
+              <label for="adminPassword">Password:</label>
+              <input type="password" id="adminPassword" name="adminPassword" required>
+              <input type="submit" value="Login"></input>
+          </form>
+          <div class="ol-popup-closer" id="closerBtn3"></div>
+      </div>
+  </div>-->
+
+    <!-- YouTube Tooltip -->
+    <div class="tooltip" id="youtube-tooltip">
+      <div id="youtube-icon" class="fa fa-youtube-play"></div>
+      <span class="tooltiptext">Aerial Video</span>
+    </div>
+
+    <!-- 360 Image Popup Tooltip -->
+    <div class="tooltip" id="img360-tooltip">
+      <div id="img360">
+        <img id="pic" src="/assets/360icon-Yjvy3c-X.png" alt="" />
+      </div>
+      <span class="tooltiptext">360 Image </span>
+    </div>
+
+    <!-- Geolocation Tooltip -->
+    <div class="tooltip" id="geolocation-tooltip">
+      <a href="#">
+        <button id="my-location-button" class="my-location-button">
+          <img
+            id="beforelocator"
+            src="/assets/png-transparent-computer-icons-google-maps-location-navigational-map-location-geolocation-removebg-preview-CwBfFyCO.png"
+            alt="My Location"
+          />
+        </button>
+      </a>
+      <span class="tooltiptext">Find your Location</span>
+    </div>
+     <!-- Base layer Tooltip -->
+     <div class="tooltip" id="mapswitcher-tooltip">
+      <a href="#">
+        <div id="map-switcher" class="map-switcher">
+          <img id="osm" src="/assets/Openstreetmap_logo.svg-R68CmHRR.png"  alt="">
+          <img id="gsm" src="/assets/Google_Maps_icon_(2020).svg-BDF-ptuf.png"  alt="">
+        </div>
+      </a>
+      <span id="tooltips" class="tooltiptext"></span>
+    </div>
+
+    <!-- Popup div 
+    <div id="popup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup-content">
+        <div id="info"></div>
+        <div id="no-feature"></div>
+      </div>
+    </div>-->
+
+    
+
+    <!--Export-->
+
+    <!--<form id="export" action="">
+        <button id="btn" type="submit" class="form-control export_position" >Export</button>
+    </form>-->
+
+ 
+    <!-- <script type="module" src="./scripts/coordiante.js"></script> -->
+    <!--<script type="module" src="./scripts/identify.js"></script>-->
+    <!--<script type="module" src="./scripts/Landmarks.js"></script>-->
+
+   
+
+    
+  </body>
+</html>
